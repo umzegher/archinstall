@@ -76,6 +76,10 @@ def find_lsblk_info(
 		if lsblk_info.path == dev_path:
 			return lsblk_info
 
+		child_lsblk_info = find_lsblk_info(dev_path, lsblk_info.children)
+		if child_lsblk_info is not None:
+			return child_lsblk_info
+
 	return None
 
 
